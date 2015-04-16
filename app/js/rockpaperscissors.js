@@ -21,27 +21,59 @@ function randomPlay() {
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
+function getInput() {
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
+    return prompt();
+}
+
+function randomPlay() {
+    var randomNumber = Math.random();
+    if (randomNumber < 0.33) {
+        return "rock";
+    } else if (randomNumber < 0.66) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+
+
+
 function getPlayerMove(move) {
-    // Write an expression that operates on a variable called `move`
-    // If a `move` has a value, your expression should evaluate to that value.
-    // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return /* Your Expression */;
+    var player = move || getInput();
+
+    return player;
 }
 
 function getComputerMove(move) {
-    // Write an expression that operates on a variable called `move`
-    // If a `move` has a value, your expression should evaluate to that value.
-    // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return /* Your Expression */;
+    var cpu = move || randomPlay();
+
+    return cpu;
 }
 
+
+
+
 function getWinner(playerMove,computerMove) {
-    var winner;
-    // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
-    // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
-    // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    /* YOUR CODE HERE */
+    var winner = 'player';
+
+    if(playerMove == computerMove) {
+        winner = 'tie'
+    }
+    else if(computerMove == 'rock' && playerMove == 'scissors') {
+        winner = 'cpu'
+    }
+    else if (computerMove == 'scissors' && playerMove == 'paper') {
+        winner = 'cpu'
+    }
+    else if (computerMove == 'paper' && playerMove == 'rock') {
+        winner = 'cpu'
+    }
+    console.log("====================================");
+    console.log(playerMove + " VS " + computerMove);
+    console.log("====================================")
     return winner;
+}
 }
 
 function playToFive() {
